@@ -1,0 +1,45 @@
+﻿@page "/Hostel"
+@using Hostel_Manager.Models.Dtos;
+
+
+@if(Hostels == null){
+    <h3>Loading Hostels....</h3>
+}
+else
+{
+    <h3 class="mb-5">Hostels</h3>
+    var HostelCount = Hostels.Count();
+    @if(HostelCount > 0)
+    {
+        const int itemsPerRow = 4;
+        var hostelsRowList = new List<HostelDto>();
+        @for(int i=0; i<HostelCount; i++)
+        {
+            hostelsRowList = Hostels.Skip(i * itemsPerRow).Take(itemsPerRow).ToList();
+            <div class="row mt-3">
+                @foreach(var item in hostelsRowList)
+                {
+                    <div class="col-md-3 mb-2">
+                        <a href="#">
+                            <div class="card">
+                                <img class="img-thumbnail" src="@item.Image_Hostel">
+                                <div class="card-body">
+                                    <h5 class="card-title mb-3">
+                                        @item.Hostel_name
+                                    </h5>
+                                    <p class="card-text">
+                                        <b>@item.Hostel_address</b>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        }
+    }
+}
+@code{
+    public IHostelService hostelService { get; set; }
+
+}

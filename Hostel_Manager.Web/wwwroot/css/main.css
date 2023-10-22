@@ -1,0 +1,122 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.text-primary{
+    color: #FEA116 !important;
+}
+.container-header{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.navbar-brand{
+    color: rgb(10, 104, 255) !important;
+    font-weight: 600;
+}
+.nav-link:after{
+    content: "";
+    position: absolute !important;
+    background-color: #0ef;
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: 0px;
+    transition: 0.3s;
+}
+.nav-link:hover{
+    color: #0ef !important;
+    transition: 0.3s;
+}
+.nav-link:hover:after{
+    position: absolute;
+    width: 100%;
+}
+.nav-link:focus, .nav-link.active{
+    color: #0ef !important;
+}
+.navbar-toggler{
+    color: #fff !important;
+}
+.navbar-toggler:focus{
+    border: none;
+    box-shadow: none;
+}
+.nav-icon:hover{
+    color: #0ef;
+}
+.dropdown-menu{
+    background: #000;
+}
+.dropdown-item{
+    color: #fff;
+    transition: .4s;
+}
+.dropdown-item:hover{
+    color: #0ef;
+    background: none;
+}
+.dropdown-toggle::after{
+    border: none !important;
+}
+@media (max-width: 992px) {
+    .container-header{
+        background: #000;
+    }
+    .nav-link:after{
+        content: "";
+        position: absolute !important;
+        background-color: #0ef;
+        height: 0px;
+        width: 0;
+        left: 0;
+        bottom: 0px;
+        transition: 0.3s;
+    }
+    .nav-link:hover{
+        color: #0ef !important;
+        transition: 0.3s;
+    }
+    .nav-link:hover:after{
+        position: absolute;
+        width: 0;
+    }
+}
+.form-control:focus{
+    border: 1px solid #ced4da;
+    box-shadow: none;
+}
+.btn:focus{
+    box-shadow: none;
+}
+.btn-search{
+    position: absolute;
+    right: 8px;
+    border-left: 1px solid #ced4da;
+    background-color: white;
+    border-radius: 1.25rem;
+}
+.btn-search:hover{
+    background-color: rgba(10, 104, 255, 0.2)
+}
+.text-search{
+    border-radius: 1.25rem;
+}
+
+.notification{
+    position: relative;
+    z-index: 10;
+}
+.container-notification{
+    transition: .4s;
+}
+.container-notification:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 12px 17px #0ef;
+}
+.footer{
+    position: relative;
+    margin-top: -100px;
+    padding-top: 180px;
+}
