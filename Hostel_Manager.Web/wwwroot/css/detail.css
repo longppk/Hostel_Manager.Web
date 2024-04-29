@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #efefef;
+}
+.container-room{
+    background-color: #fff;
+}
+.img-detail{
+    cursor: pointer;
+    border: 2px solid #000;
+}
+.hidden{
+    display: none !important;
+}
+#select_box:focus{
+    border: 1px solid #000;
+
+}
+#select_box option:focus{
+    border: none;
+}
+.btn-login{
+    background: #9cb4d8;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.btn-post{
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    background: #1877f2;
+}

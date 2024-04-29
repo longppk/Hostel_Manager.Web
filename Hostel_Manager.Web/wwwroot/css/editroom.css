@@ -1,0 +1,50 @@
+
+.label-img{
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    position: absolute;
+}
+.img{
+    width: 100px;
+    height: 100px;
+}
+
+.input-profile{
+   border-bottom: 2px solid #000;
+}
+.input-profile input:focus{
+    outline: none;
+    border: none !important;
+}
+.btn-edit{
+    border: none;
+    background: #1877f2;
+}
+.label-user{
+    border: 1px solid #000;
+    border-radius: 50%;
+    position: relative;
+}
+.img-user{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+}
+.icon-user{
+    background: rgb(176, 175, 175);
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    padding: 5px;
+    border-radius: 50%;
+}
+.input-image{
+    display: none;
+}
+@media (max-width: 992px){
+    .img-user{
+        width: 200px;
+        height: 200px;
+    }
+}
