@@ -1,0 +1,152 @@
+﻿@inherits LayoutComponentBase
+@using Microsoft.AspNetCore.Components.RenderTree
+
+<style>
+    body{
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+</style>
+<BHLoading />
+<Blazored.Toast.BlazoredToasts Position="ToastPosition.TopRight"
+                               Timeout="5"
+                               IconType="IconType.FontAwesome"
+                               ErrorIcon="fas fa-times"
+                               InfoIcon="fas fa-info"
+                               SuccessIcon="fas fa-check"
+                               WarningIcon="fas fa-exclamation"
+                               ShowProgressBar="@true"
+                               ShowCloseButton="@true">
+    <CloseButtonContent>
+        <div>
+            <span>&times;</span>
+        </div>
+    </CloseButtonContent>
+</Blazored.Toast.BlazoredToasts>
+<AuthorizeView>
+  <Authorized>
+
+    <NavBar>
+        <NavBarLeft>
+            <NavBarMenuItem Link="/">Home</NavBarMenuItem>
+            <li class="d-none d-sm-inline-block nav-item ">
+                <a class="nav-link">@breadcumb</a>
+            </li>
+        </NavBarLeft>
+        <NavBarRight>
+            <NavBarDropDown>
+                <NavBarBadge Color="Color.Warning" Icon="far fa-bell">@CountMessages</NavBarBadge>
+                <NavBarDropDownMenu>
+                    <DropdownHeader>@CountMessages Thông báo mới</DropdownHeader>
+                    <DropdownDivider></DropdownDivider>
+                    @if(ListMeassges != null && ListMeassges.Any())
+                    {
+                        foreach (var item in ListMeassges)
+                        {
+                                <a class="dropdown-item " title="@item.Message" @onclick="@(()=> ReadMessageHander(item))"
+                                   style="cursor: pointer; text-overflow:ellipsis;white-space: nowrap;overflow: hidden">
+                                    <span><i class="fas fa-envelope mr-1"></i> @(item.Type == "Booking" ? "Đặt phòng" : "Phuê duyệt trọ")</span>
+                                    <br />
+                                    @item.Message
+                                    <p class="float-right text-muted text-sm w1FontName w1FontSize">
+                                        <i class="fa-regular fa-clock mr-2"></i>
+                                        @((DateTime.Now - @item.Date_Create.Value).Days / 365 > 0 ?
+                                            (DateTime.Now - @item.Date_Create.Value).Days / 365 + " năm trước" :
+                                            (DateTime.Now - @item.Date_Create.Value).Days / 30 > 0 ?
+                                            (DateTime.Now - @item.Date_Create.Value).Days / 30 + " tháng trước" :
+                                            (DateTime.Now - @item.Date_Create.Value).Days / 7 > 0 ?
+                                            (DateTime.Now - @item.Date_Create.Value).Days / 7 + " tuần trước" :
+                                            (DateTime.Now - @item.Date_Create.Value).Days > 0 ?
+                                            (DateTime.Now - @item.Date_Create.Value).Days + " ngày trước" :
+                                            (DateTime.Now - @item.Date_Create.Value).Hours + (DateTime.Now - @item.Date_Create.Value).Days * 24 > 0 ?
+                                            (DateTime.Now - @item.Date_Create.Value).Hours + (DateTime.Now - @item.Date_Create.Value).Days * 24 + " giờ trước" :
+                                            (DateTime.Now - @item.Date_Create.Value).Minutes + (DateTime.Now - @item.Date_Create.Value).Days * 24 * 60 > 0 ?
+                                            (DateTime.Now - @item.Date_Create.Value).Minutes + (DateTime.Now - @item.Date_Create.Value).Days * 24 * 60 + " phút trước" :
+                                            (DateTime.Now - @item.Date_Create.Value).Seconds + (DateTime.Now - @item.Date_Create.Value).Days * 24 * 60 * 60 > 0 ?
+                                            (DateTime.Now - @item.Date_Create.Value).Seconds + (DateTime.Now - @item.Date_Create.Value).Days * 24 * 60 * 60 + " giây trước" : ""
+                                            )
+                                    </p>
+                                </a>
+                                <DropdownDivider></DropdownDivider>
+                        }
+                    }
+                    <DropdownDivider></DropdownDivider>
+                        <DropdownFooter OnClick="@(()=> Navigato("/admin/message"))">Xem tất cả</DropdownFooter>
+                </NavBarDropDownMenu>
+            </NavBarDropDown>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-toggle="dropdown" aria-label="Open user menu">
+                    <img src="../dist/img/user.jpg" width="90" height="27" alt="HSystem" class="navbar-brand-image">
+                    <div class="d-none d-xl-block ps-2">
+                        <div class="text-muted" style="font-size: 11.5px;">@FullName</div>
+                        <div class="text-muted" style="font-size: 11px;">@(IsSupperAdmin ? "Admin" : "Client")</div>
+                    </div>
+                </a>
+                <NavBarDropDownMenu>
+                     <a @onclick="@NavigatoEncrypt" class="dropdown-item"> <i style="margin-right: 5px" class="fa-solid fa-circle-info"></i>Thông tin chi tiết</a>
+                     <a href="/admin/logout" class="dropdown-item"><i style="margin-right: 5px" class="fa-solid fa-arrow-right-from-bracket"></i>Logout </a>
+                </NavBarDropDownMenu>
+            </div>
+        </NavBarRight>
+    </NavBar>
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-light-lightblue elevation-4 w1FontName w1FontSizeMenu">
+        <BrandLogo Link="https://adminlte.io/" Logo="./images/logo.png">BHouse Manager</BrandLogo>
+        <SideBar>
+            <!-- Sidebar user panel (optional) -->
+                <SideBarUserPanel ImageEffect="ImageEffect.Circle" Link="starter-pages/user-page" Elevation="Elevation.Three" UserImage="../dist/img/user.jpg">@FullName</SideBarUserPanel>
+            @*<SideBarSearch></SideBarSearch>*@
+            <SideBarMenu>
+                @if (ListMenus != null && ListMenus.Any())
+                {
+                    foreach (var item in ListMenus)
+                    {
+                        <SideBarMenuItem Link="@item.Link" Icon="@item.Icon">
+                            @item.Name
+                        </SideBarMenuItem>
+                    }
+                }
+                @*<SideBarTreeView Icon="far fa-folder-open">
+                    <Title>Báo cáo</Title>
+                    <Items>
+                        <SideBarMenuItem Link="document">
+                            Doanh số chi tiết
+                        </SideBarMenuItem>
+                        <SideBarMenuItem Link="listdocument">
+                            Doanh số tổng hợp 
+                        </SideBarMenuItem>
+                        <SideBarMenuItem Link="listdocument">
+                            Doanh số theo chứng từ
+                        </SideBarMenuItem>
+                    </Items>
+                </SideBarTreeView>*@
+            </SideBarMenu>
+        </SideBar>
+    </aside>
+    <ContentWrapper>
+        <section class="content" style="padding: 0.5rem;">
+            <TelerikRootComponent>
+                <CascadingValue Value="@UserId" Name="pUserId">
+                    <CascadingValue Value="@IsSupperAdmin" Name="pIsSupperAdmin">
+                        <CascadingValue Value="@ListMenus" Name="pListMenus">
+                                <CascadingValue Value="@ListMeassgesHandler" Name="pListMeassgesHandler">
+                                    @Body
+                                </CascadingValue>
+                        </CascadingValue>
+                    </CascadingValue>
+                </CascadingValue>
+                
+                <BHConfirmPassword FullName="@FullName" UserName="@UserName" />
+            </TelerikRootComponent>
+        </section>
+    </ContentWrapper>
+
+    <MainFooter>
+        <Default>
+            Copyright &copy; All rights reserved.
+        </Default>
+    </MainFooter>
+    </Authorized>
+    <NotAuthorized>
+        <RedirectToLogin/>
+     </NotAuthorized>
+</AuthorizeView>

@@ -1,0 +1,138 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@namespace BHSystem.Web.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="~/images/logo.png" sizes="32x32">
+
+    <base href="~/" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="_content/Blazored.Toast/blazored-toast.min.css" />
+    @*<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />*@
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/dist/css/adminlte.min.css">
+    <!-- Telerik Kendo UI Scripts -->
+    <link rel="stylesheet" href="_content/Telerik.UI.for.Blazor/css/kendo-theme-default/all.css" />
+    <link href="css/site.css" rel="stylesheet" />
+    <link href="css/mysite.css" rel="stylesheet" />
+
+    <!-- client -->
+    <link href="~/css/clients/style.css" rel="stylesheet" />
+    <link href="~/css/clients/header.css" rel="stylesheet" />
+    <link href="~/css/clients/footer.css" rel="stylesheet" />
+    <!-- end client -->
+    @* <link href="DMS.WEB.styles.css" rel="stylesheet" /> *@
+    <component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />
+</head>
+<body class="hold-transition layout-fixed text-sm">
+    <div class="wrapper">
+        <app>
+            @RenderBody()
+        </app>
+        <div id="blazor-error-ui">
+            <environment include="Staging,Production">
+                An error has occurred. This application may no longer respond until reloaded.
+            </environment>
+            <environment include="Development">
+                An unhandled exception has occurred. See browser dev tools for details.
+            </environment>
+            <a href="" class="reload">Reload</a>
+            <a class="dismiss">🗙</a>
+        </div>
+    </div>
+    
+
+    
+    <div id="components-reconnect-modal" class="my-reconnect-modal components-reconnect-hide">
+        <div class="show">
+            <p>Mạng không ổn định. Vui lòng chờ 30s để dược kết nối tự động</p>
+            <div class="spinner-border"></div>
+        </div>
+        <div class="failed">
+            <div class="m1-custom-failed">
+                <h1>:(</h1>
+                <br />
+                <h2>Mất kết nối tới máy chủ. Vui lòng chờ đến khi server được ổn định</h2>
+                <br />
+                <div class="gears">
+                    <div class="gear one">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="gear two">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="gear three">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rejected">
+            <div class="m1-custom-failed">
+                <h1>:(</h1>
+                <br />
+                <h2>Đã ngắt kết nối đến máy chủ. Vui lòng liên hệ bộ phận IT để được hổ trợ!</h2>
+                <br />
+                <div class="gears">
+                    <div class="gear one">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="gear two">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="gear three">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="_framework/blazor.server.js" defer></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="~/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="_content/Blazorized.AdminLte/js/interop.js"></script>
+    <script src="~/dist/js/adminlte.min.js"></script>  
+
+    <!-- 4 gio -->
+    <script>
+        Blazor.start({
+            reconnectionOptions: {
+                maxRetries: 2888,
+                retryIntervalMilliseconds: 5000
+            }
+        });
+    </script>
+    <!-- Telerik Kendo UI Scripts -->
+    <script src="_content/Telerik.UI.for.Blazor/js/telerik-blazor.js" defer></script>
+
+    <!-- my scripts -->
+    <script src="../scripts/myscript.js"></script>
+</body>
+</html>

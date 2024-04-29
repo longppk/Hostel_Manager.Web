@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\BHSystem.Web",
+    "\\BHSystem.Web\\ViewModels",
+    "\\BHSystem.Web\\wwwroot",
+    "\\BHSystem.Web\\wwwroot\\dist",
+    "\\BHSystem.Web\\wwwroot\\dist\\css",
+    "\\BHSystem.Web\\wwwroot\\dist\\css\\alt",
+    "\\BHSystem.Web\\wwwroot\\images",
+    "\\BHSytem.Models",
+    "\\BHSytem.Models\\Entities"
+  ],
+  "SelectedNode": "\\BHSystem.Web\\wwwroot\\dist\\css\\alt\\adminlte.components.css",
+  "PreviewInSolutionExplorer": false
+}

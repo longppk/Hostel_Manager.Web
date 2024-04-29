@@ -1,0 +1,12 @@
+D:\ASP.NET_WEB_API\BHSytem.Models\bin\Debug\net6.0\BHSytem.Models.deps.json
+D:\ASP.NET_WEB_API\BHSytem.Models\bin\Debug\net6.0\BHSytem.Models.dll
+D:\ASP.NET_WEB_API\BHSytem.Models\bin\Debug\net6.0\BHSytem.Models.pdb
+D:\ASP.NET_WEB_API\BHSytem.Models\obj\Debug\net6.0\BHSytem.Models.csproj.AssemblyReference.cache
+D:\ASP.NET_WEB_API\BHSytem.Models\obj\Debug\net6.0\BHSytem.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\ASP.NET_WEB_API\BHSytem.Models\obj\Debug\net6.0\BHSytem.Models.AssemblyInfoInputs.cache
+D:\ASP.NET_WEB_API\BHSytem.Models\obj\Debug\net6.0\BHSytem.Models.AssemblyInfo.cs
+D:\ASP.NET_WEB_API\BHSytem.Models\obj\Debug\net6.0\BHSytem.Models.csproj.CoreCompileInputs.cache
+D:\ASP.NET_WEB_API\BHSytem.Models\obj\Debug\net6.0\BHSytem.Models.dll
+D:\ASP.NET_WEB_API\BHSytem.Models\obj\Debug\net6.0\refint\BHSytem.Models.dll
+D:\ASP.NET_WEB_API\BHSytem.Models\obj\Debug\net6.0\BHSytem.Models.pdb
+D:\ASP.NET_WEB_API\BHSytem.Models\obj\Debug\net6.0\ref\BHSytem.Models.dll

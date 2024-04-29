@@ -1,0 +1,103 @@
+﻿@page "/admin/approve-booking"
+
+<TelerikTabStrip>
+    <TabStripTab Title="Chờ xử lý">
+        <TelerikToolBar Class="border-bottom-0">
+            <ToolBarButton IconClass="fa-solid fa-repeat bh-color-green" OnClick="@(()=> ReLoadDataHandler("Chờ xử lý"))">Làm mới</ToolBarButton>
+            <ToolBarButton IconClass="fa-solid fa-check bh-color-green" OnClick="@(()=> ConfirmHandler("Phê duyệt"))">Xác nhận</ToolBarButton>
+            <ToolBarButton IconClass="fa-solid fa-xmark bh-color-red" OnClick="@(()=> ConfirmHandler("Từ chối"))">Từ chối</ToolBarButton>
+        </TelerikToolBar>
+
+        <div class="bh-table-content" style=" height: calc(100vh - 215px);">
+            <TelerikGrid Data="@ListBookingWaitting"
+                         Height="100%"
+                         Width="100%"
+                         RowHeight="25"
+                         Pageable="true"
+                         PageSize="50"
+                         Sortable="true"
+                         Resizable="true"
+                         FilterMode="@GridFilterMode.FilterMenu"
+                         SelectionMode="@GridSelectionMode.Multiple"
+                         ScrollMode="@GridScrollMode.Scrollable"
+                         @bind-SelectedItems="@SelectedBookingWaitting">
+                <GridSettings>
+                    <GridPagerSettings InputType="PagerInputType.Input" />
+                </GridSettings>
+                <GridAggregates>
+                    <GridAggregate Field=@nameof(BookingModel.Id) Aggregate="@GridAggregateType.Count" />
+                </GridAggregates>
+                <GridColumns>
+                    <GridCheckboxColumn Width="30px" SelectAll="@true"></GridCheckboxColumn>
+                    <GridColumn Field=@nameof(BookingModel.Id) Width="130px" MaxResizableWidth="150" Title="Mã đặt phòng">
+                        <Template>
+                            @{
+                                var model = (context as BookingModel);
+                                <span class="h-link">@model!.Id</span>
+                            }
+                        </Template>
+                        <FooterTemplate>
+                            Số dòng: @context.Count
+                        </FooterTemplate>
+                    </GridColumn>
+                    <GridColumn Field=@nameof(BookingModel.FullName) Width="170px" Title="Người đặt"></GridColumn>
+                    <GridColumn Field=@nameof(BookingModel.Phone) Width="170px" Title="Số điện thoại"></GridColumn>
+                    <GridColumn Field=@nameof(BHouseModel.Date_Create) DisplayFormat="@DefaultConstants.FORMAT_GRID_DATE_TIME" Width="120px" Title="Ngày đặt phòng"></GridColumn>
+                    <GridColumn Field=@nameof(BookingModel.Room_Name) Width="170px" Title="Tên phòng"></GridColumn>
+                    <GridColumn Field=@nameof(BookingModel.BHouse_Name) Width="170px" Title="Tên trọ"></GridColumn>
+                </GridColumns>
+            </TelerikGrid>
+        </div>
+    </TabStripTab>
+    <TabStripTab Title="Tất cả">
+         <TelerikToolBar Class="border-bottom-0">
+            <ToolBarButton IconClass="fa-solid fa-repeat bh-color-green" OnClick="@(()=> ReLoadDataHandler())">Làm mới</ToolBarButton>
+        </TelerikToolBar>
+        <div class="bh-table-content" style=" height: calc(100vh - 215px);">
+            <TelerikGrid Data="@ListBookingAll"
+                         Height="100%"
+                         Width="100%"
+                         RowHeight="25"
+                         Pageable="true"
+                         PageSize="50"
+                         Sortable="true"
+                         Resizable="true"
+                         FilterMode="@GridFilterMode.FilterMenu"
+                         SelectionMode="@GridSelectionMode.Multiple"
+                         ScrollMode="@GridScrollMode.Scrollable"
+                         @bind-SelectedItems="@SelectedBookingWaitting">
+                <GridSettings>
+                    <GridPagerSettings InputType="PagerInputType.Input" />
+                </GridSettings>
+                <GridAggregates>
+                    <GridAggregate Field=@nameof(BookingModel.Id) Aggregate="@GridAggregateType.Count" />
+                </GridAggregates>
+                <GridColumns>
+                    @*<GridCheckboxColumn Width="30px" SelectAll="@true"></GridCheckboxColumn>*@
+                    <GridColumn Field=@nameof(BookingModel.Id) Width="130px" MaxResizableWidth="150" Title="Mã đặt phòng">
+                        <Template>
+                            @{
+                                var model = (context as BookingModel);
+                                <span class="h-link">@model!.Id</span>
+                            }
+                        </Template>
+                        <FooterTemplate>
+                            Số dòng: @context.Count
+                        </FooterTemplate>
+                    </GridColumn>
+                    <GridColumn Field=@nameof(BookingModel.FullName) Width="170px" Title="Người đặt"></GridColumn>
+                    <GridColumn Field=@nameof(BookingModel.Phone) Width="170px" Title="Số điện thoại"></GridColumn>
+                    <GridColumn Field=@nameof(BHouseModel.Date_Create) DisplayFormat="@DefaultConstants.FORMAT_GRID_DATE_TIME" Width="120px" Title="Ngày đặt phòng"></GridColumn>
+                    <GridColumn Field=@nameof(BookingModel.Room_Name) Width="170px" Title="Tên phòng"></GridColumn>
+                    <GridColumn Field=@nameof(BookingModel.BHouse_Name) Width="170px" Title="Tên trọ"></GridColumn>
+                    <GridColumn Field=@nameof(BookingModel.Status) Width="170px" Title="Trạng thái"></GridColumn>
+                    <GridColumn Field=@nameof(BHouseModel.Date_Create) DisplayFormat="@DefaultConstants.FORMAT_GRID_DATE_TIME" Width="120px" Title="Ngày đặt phòng"></GridColumn>
+                     <GridColumn Field=@nameof(BHouseModel.Date_Update) DisplayFormat="@DefaultConstants.FORMAT_GRID_DATE_TIME" Width="120px" Title="Ngày xác nhận"></GridColumn>
+                </GridColumns>
+            </TelerikGrid>
+        </div>
+    </TabStripTab>
+</TelerikTabStrip>
+
+
+<BHConfirm @ref="@_rDialogs" />

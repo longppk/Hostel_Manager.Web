@@ -1,0 +1,173 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = BHSystem.Web
+build_property.RootNamespace = BHSystem.Web
+build_property.ProjectDir = D:\ASP.NET_WEB_API\BHSystem.Web\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\ASP.NET_WEB_API\BHSystem.Web
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Controls/BHConfirm.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcQkhDb25maXJtLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Controls/BHConfirmPassword.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcQkhDb25maXJtUGFzc3dvcmQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Controls/BHDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcQkhEaWFsb2cucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Controls/BHLabel.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcQkhMYWJlbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Controls/BHListImage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcQkhMaXN0SW1hZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Controls/BHLoading.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcQkhMb2FkaW5nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Controls/BHUploadFileImage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcQkhVcGxvYWRGaWxlSW1hZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Controls/BHValidationTooltip.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcQkhWYWxpZGF0aW9uVG9vbHRpcC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Controls/Clients/ItemBHouseBookingHistory.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcQ2xpZW50c1xJdGVtQkhvdXNlQm9va2luZ0hpc3RvcnkucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Controls/Clients/ItemBHouseHorizontal.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcQ2xpZW50c1xJdGVtQkhvdXNlSG9yaXpvbnRhbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Controls/Clients/ItemBHouseVertical.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcQ2xpZW50c1xJdGVtQkhvdXNlVmVydGljYWwucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Features/Admin/ApproveBookingPage.razor]
+build_metadata.AdditionalFiles.TargetPath = RmVhdHVyZXNcQWRtaW5cQXBwcm92ZUJvb2tpbmdQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Features/Admin/ApproveRoomPage.razor]
+build_metadata.AdditionalFiles.TargetPath = RmVhdHVyZXNcQWRtaW5cQXBwcm92ZVJvb21QYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Features/Admin/BHousePage.razor]
+build_metadata.AdditionalFiles.TargetPath = RmVhdHVyZXNcQWRtaW5cQkhvdXNlUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Features/Admin/BoardingHousePage.razor]
+build_metadata.AdditionalFiles.TargetPath = RmVhdHVyZXNcQWRtaW5cQm9hcmRpbmdIb3VzZVBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Features/Admin/InfoUserPage.razor]
+build_metadata.AdditionalFiles.TargetPath = RmVhdHVyZXNcQWRtaW5cSW5mb1VzZXJQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Features/Admin/LoginPage.razor]
+build_metadata.AdditionalFiles.TargetPath = RmVhdHVyZXNcQWRtaW5cTG9naW5QYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Features/Admin/LogoutPage.razor]
+build_metadata.AdditionalFiles.TargetPath = RmVhdHVyZXNcQWRtaW5cTG9nb3V0UGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Features/Admin/MessagePage.razor]
+build_metadata.AdditionalFiles.TargetPath = RmVhdHVyZXNcQWRtaW5cTWVzc2FnZVBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Features/Admin/RedirectToLogin.razor]
+build_metadata.AdditionalFiles.TargetPath = RmVhdHVyZXNcQWRtaW5cUmVkaXJlY3RUb0xvZ2luLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Features/Admin/RoleMenuPage.razor]
+build_metadata.AdditionalFiles.TargetPath = RmVhdHVyZXNcQWRtaW5cUm9sZU1lbnVQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Features/Admin/RolePage.razor]
+build_metadata.AdditionalFiles.TargetPath = RmVhdHVyZXNcQWRtaW5cUm9sZVBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Features/Admin/RoleUserPage.razor]
+build_metadata.AdditionalFiles.TargetPath = RmVhdHVyZXNcQWRtaW5cUm9sZVVzZXJQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Features/Admin/RoomPage.razor]
+build_metadata.AdditionalFiles.TargetPath = RmVhdHVyZXNcQWRtaW5cUm9vbVBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Features/Admin/RoomPricePage.razor]
+build_metadata.AdditionalFiles.TargetPath = RmVhdHVyZXNcQWRtaW5cUm9vbVByaWNlUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Features/Admin/UserPage.razor]
+build_metadata.AdditionalFiles.TargetPath = RmVhdHVyZXNcQWRtaW5cVXNlclBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Features/Client/BHouseDetail.razor]
+build_metadata.AdditionalFiles.TargetPath = RmVhdHVyZXNcQ2xpZW50XEJIb3VzZURldGFpbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Features/Client/IndexClient.razor]
+build_metadata.AdditionalFiles.TargetPath = RmVhdHVyZXNcQ2xpZW50XEluZGV4Q2xpZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Features/Client/LoginClientPage.razor]
+build_metadata.AdditionalFiles.TargetPath = RmVhdHVyZXNcQ2xpZW50XExvZ2luQ2xpZW50UGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Features/Client/LogoutClientPage.razor]
+build_metadata.AdditionalFiles.TargetPath = RmVhdHVyZXNcQ2xpZW50XExvZ291dENsaWVudFBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Features/Client/RegisterPage.razor]
+build_metadata.AdditionalFiles.TargetPath = RmVhdHVyZXNcQ2xpZW50XFJlZ2lzdGVyUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Shared/ClientLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXENsaWVudExheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Shared/LoginLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXExvZ2luTGF5b3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP.NET_WEB_API/BHSystem.Web/Pages/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

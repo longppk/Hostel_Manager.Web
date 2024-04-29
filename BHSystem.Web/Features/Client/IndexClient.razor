@@ -1,0 +1,288 @@
+﻿@layout ClientLayout
+@page "/"
+@page "/trang-chu"
+
+<!-- Search -->
+<div id="bh-search">
+    <section class="header-wrapper">
+        <div class="filter-box ">
+            <div class="banner__search-info">
+                <div class="row align-items-end">
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <label for="mail" class="k-label k-form-label">Thành phố</label>
+                        <TelerikComboBox Data="@ListCity"
+                                         Value="@SearchModel.CityId"
+                                         ValueExpression="@(() => SearchModel.CityId)"
+                                         ValueChanged="@((int value) => OnChangeCityHandler(value))"
+                                         Placeholder="Chọn thành phố..."
+                                         TextField="@nameof(CityModel.Name)"
+                                         ValueField="@nameof(CityModel.Id)"
+                                         Filterable="true"
+                                         ClearButton="true"
+                                         Id="txtCityId" Width="100%">
+                        </TelerikComboBox>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <label for="mail" class="k-label k-form-label">Huyện quận</label>
+                        <TelerikComboBox Data="@ListDistinct"
+                                         Value="@SearchModel.DistinctId"
+                                         ValueExpression="@(() => SearchModel.DistinctId)"
+                                         ValueChanged="@((int value) => OnChangeDistinctHandler(value))"
+                                         Placeholder="Chọn quận huyện..."
+                                         TextField="@nameof(CityModel.Name)"
+                                         ValueField="@nameof(CityModel.Id)"
+                                         Filterable="true"
+                                         ClearButton="true"
+                                         Id="txtDistinct_Id" Width="100%">
+                        </TelerikComboBox>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <label for="mail" class="k-label k-form-label">Xã phường</label>
+                        <TelerikComboBox Data="@ListWard"
+                                         Value="@SearchModel.WardId"
+                                         ValueExpression="@(() => SearchModel.WardId)"
+                                         ValueChanged="@((int value) => SearchModel.WardId = value)"
+                                         Placeholder="Chọn xã phường..."
+                                         TextField="@nameof(CityModel.Name)"
+                                         ValueField="@nameof(CityModel.Id)"
+                                         Filterable="true"
+                                         ClearButton="true"
+                                         Id="txtWard_Id" Width="100%">
+                        </TelerikComboBox>
+                    </div>
+                    <div class="col-xl-2 col-lg-4 col-md-6 col-sm-12">
+                        <TelerikButton Class="bh-btn-search mb-1" IconClass="fa-solid fa-filter" 
+                            FillMode="@(ThemeConstants.Button.FillMode.Outline)" 
+                            ThemeColor="@(ThemeConstants.Button.ThemeColor.Primary)"
+                            OnClick="@ReLoadDataHandler">Tìm kiếm</TelerikButton>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>
+<!-- Search -->
+<!-- Boarding House -->
+<div id="h-service">
+    <div className="h-wrapper">
+        <section className="h-service">
+            <div class="row">
+                <div class="col-lg-9 col-md-8 col-sm-12">
+                    
+                    @*<ItemBHouseHorizontal Title="Phòng full nội thất, có ban công thoáng mát 25-30m2 giá 4,5tr-5,8tr. LH: 0938 565 *** Chị Linh"
+                                          Description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure ex deleniti facere sapiente voluptas libero facilis dolores possimus.
+                                    Ea nobis cum corporis. Qui nulla eos odit. Assumenda eos officia neque."
+                                          Address="Quận 1, Hồ Chí Minh" Price="8.5" Acreage="22" FullName="Nguyễn Văn A" CreateTime="Đăng tin hôm qua"
+                                          Contact="0357866848" />*@
+                    @*<ItemBHouseHorizontal Title="Phòng full nội thất, có ban công thoáng mát 25-30m2 giá 4,5tr-5,8tr. LH: 0938 565 *** Chị Linh"
+                                          Description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure ex deleniti facere sapiente voluptas libero facilis dolores possimus.
+                                    Ea nobis cum corporis. Qui nulla eos odit. Assumenda eos officia neque."
+                                          Address="Quận 1, Hồ Chí Minh" Price="8.5" Acreage="22" FullName="Nguyễn Văn A" CreateTime="Đăng tin hôm qua"
+                                          Contact="0357866848" />
+                    <ItemBHouseHorizontal Title="Phòng full nội thất, có ban công thoáng mát 25-30m2 giá 4,5tr-5,8tr. LH: 0938 565 *** Chị Linh"
+                                          Description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure ex deleniti facere sapiente voluptas libero facilis dolores possimus.
+                                    Ea nobis cum corporis. Qui nulla eos odit. Assumenda eos officia neque."
+                                          Address="Quận 1, Hồ Chí Minh" Price="8.5" Acreage="22" FullName="Nguyễn Văn A" CreateTime="Đăng tin hôm qua"
+                                          Contact="0357866848" />*@
+                    @if (ListDataBHouses != null && ListDataBHouses.Any())
+                    {
+                        @for(int i=0; i< ListDataBHouses.Count; i++)
+                        {
+                            if (i > 1) break;
+                            else
+                            {
+                                var item = ListDataBHouses[i];
+                                <ItemBHouseHorizontal 
+                                    Title="@item.RoomName"
+                                    Description="@item.Desciption"
+                                    Address="@($"{item.WardName}, {item.DistinctName}, {item.CityName}")"
+                                    Price="@($"{item.Price.ToString(DefaultConstants.FORMAT_CURRENCY)}")"
+                                    Acreage="@($"{item.Acreage.ToString(DefaultConstants.FORMAT_CURRENCY)}")"
+                                    FullName="@item.FullName"
+                                    CreateTime="Đăng tin hôm qua"
+                                    CreateDate="@(item.DateCreate ?? DateTime.Now)"
+                                    Contact="@item.Phone"
+                                    ImageUrlBHouse="@item.ImageUrlBHouse"
+                                    RoomId="@item.RoomId"
+                                    ListImages="@item.ListImages" />
+                            }
+                        }
+                        <div>
+                            @for (int i = 2; i < ListDataBHouses.Count; i++)
+                            {
+                                var item = ListDataBHouses[i];
+                                <ItemBHouseVertical Title="@item.RoomName"
+                                            Description="@item.Desciption"
+                                            Address="@($"{item.WardName}, {item.DistinctName}, {item.CityName}")"
+                                            Price="@($"{item.Price.ToString(DefaultConstants.FORMAT_CURRENCY)}")" 
+                                            Acreage="@($"{item.Acreage.ToString(DefaultConstants.FORMAT_CURRENCY)}")"
+                                            FullName="@item.FullName" 
+                                            CreateTime="Đăng tin hôm qua"
+                                            CreateDate="@(item.DateCreate ?? DateTime.Now)"
+                                            Contact="@item.Phone"
+                                            ImageUrlBHouse = "@item.ImageUrlBHouse"
+                                            RoomId="@item.RoomId"
+                                            ListImages="@item.ListImages"/>
+                            }
+                        
+                        </div>
+                    }
+
+                    @if(Pagination != null && Pagination.TotalPage > 0)
+                    {
+                        <nav aria-label="Page navigation" class="bh-pagination" style="margin-top: 10px">
+                            <ul class="pagination d-flex justify-content-center">
+                                <li class="page-item" disabled>
+                                    <a class="page-link" aria-label="Previous" @onclick="@(() => OnChangePageIndex((Pagination.CurrentPage - 1)))">
+                                        <span aria-hidden="true">&laquo;</span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </li>
+                                @for (int i = 0; i < Pagination.TotalPage; i++)
+                                {
+                                    int pageIndex = (i + 1);
+                                    bool isActive = pageIndex == SearchModel.Page;
+                                    <li class="page-item @(isActive ? "active": "")">
+                                        <a class="page-link" @onclick="@(() => OnChangePageIndex((pageIndex)))">@pageIndex</a>
+                                    </li>
+                                }
+                                <li class="page-item">
+                                    <a class="page-link" aria-label="Next" @onclick="@(() => OnChangePageIndex((Pagination.CurrentPage + 1)))">
+                                        <span aria-hidden="true">&raquo;</span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    }
+                    
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <TelerikCard Width="100%">
+                        <CardBody>
+                            <h1 class="bh-h1">Xem theo giá</h1>
+                            <div class="row">
+                                @foreach(var item in ListPrices)
+                                {
+                                    <div class="col-md-6 col-sm-12" @onclick="@(()=> OnChangePrice(item.Key))">
+                                        <i class="fa-solid fa-chevron-right" style="font-size: 9px; margin-right: 5px;"></i>
+                                        <span class="bh-link-hover bh-font-size @(SearchModel.KeyPrice == item.Key ? "bh-color-active" : "")">@item.Value</span>
+                                        <CardSeparator></CardSeparator>
+                                    </div>
+                                }
+                                @*<div class="col-md-6 col-sm-12">
+                                    <i class="fa-solid fa-chevron-right" style="font-size: 9px; margin-right: 5px;"></i>
+                                    <span class="bh-link-hover bh-font-size">Dưới 1 triệu</span>
+                                    <CardSeparator></CardSeparator>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <i class="fa-solid fa-chevron-right" style="font-size: 9px; margin-right: 5px;"></i>
+                                    <span class="bh-link-hover bh-font-size">Từ 1 - 2 triệu</span>
+                                    <CardSeparator></CardSeparator>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <i class="fa-solid fa-chevron-right" style="font-size: 9px; margin-right: 5px;"></i>
+                                    <span class="bh-link-hover bh-font-size">Từ 3 - 5 triệu</span>
+                                    <CardSeparator></CardSeparator>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <i class="fa-solid fa-chevron-right" style="font-size: 9px; margin-right: 5px;"></i>
+                                    <span class="bh-link-hover bh-font-size">Từ 5 - 7 triệu</span>
+                                    <CardSeparator></CardSeparator>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <i class="fa-solid fa-chevron-right" style="font-size: 9px; margin-right: 5px;"></i>
+                                    <span class="bh-link-hover bh-font-size">Từ 7 - 10 triệu</span>
+                                    <CardSeparator></CardSeparator>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <i class="fa-solid fa-chevron-right" style="font-size: 9px; margin-right: 5px;"></i>
+                                    <span class="bh-link-hover bh-font-size">Từ 10 - 15 triệu</span>
+                                    <CardSeparator></CardSeparator>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <i class="fa-solid fa-chevron-right" style="font-size: 9px; margin-right: 5px;"></i>
+                                    <span class="bh-link-hover bh-font-size">Trên 15 triệu</span>
+                                    <CardSeparator></CardSeparator>
+                                </div>*@
+                            </div>
+                        </CardBody>
+                    </TelerikCard>
+                    <TelerikCard Class="mt-4" Width="100%">
+                        <CardBody>
+                            <h1 class="bh-h1">Lọc theo diện tích</h1>
+                            <div class="row">
+                                @foreach(var item in ListAcreages)
+                                {
+                                    <div class="col-md-6 col-sm-12" 
+                                        @onclick="@(()=> OnChangePrice(item.Key, false))">
+                                        <i class="fa-solid fa-chevron-right" style="font-size: 9px; margin-right: 5px;"></i>
+                                        <span class="bh-link-hover bh-font-size @(SearchModel.KeyAcreage == item.Key ? "bh-color-active" : "")">@item.Value</span>
+                                        <CardSeparator></CardSeparator>
+                                    </div>
+                                }
+                                
+                                @*<div class="col-md-6 col-sm-12">
+                                    <i class="fa-solid fa-chevron-right" style="font-size: 9px; margin-right: 5px;"></i>
+                                    <span class="bh-link-hover bh-font-size">20 -30 m²</span>
+                                    <CardSeparator></CardSeparator>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <i class="fa-solid fa-chevron-right" style="font-size: 9px; margin-right: 5px;"></i>
+                                    <span class="bh-link-hover bh-font-size">30 -40 m²</span>
+                                    <CardSeparator></CardSeparator>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <i class="fa-solid fa-chevron-right" style="font-size: 9px; margin-right: 5px;"></i>
+                                    <span class="bh-link-hover bh-font-size">40 -50 m²</span>
+                                    <CardSeparator></CardSeparator>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <i class="fa-solid fa-chevron-right" style="font-size: 9px; margin-right: 5px;"></i>
+                                    <span class="bh-link-hover bh-font-size">Trên 50 m²</span>
+                                    <CardSeparator></CardSeparator>
+                                </div>*@
+                            </div>
+                        </CardBody>
+                    </TelerikCard>
+                    <TelerikCard Class="mt-4" Width="100%">
+                        <CardBody>
+                            <h1 class="bh-h1">Tin mới đăng</h1>
+                        </CardBody>
+                    </TelerikCard>
+                    @*<TelerikCard Class="mt-4" Width="100%">
+                        <CardBody>
+                            <h1 class="bh-h1">Bài viết mới</h1>
+                        </CardBody>
+                    </TelerikCard>*@
+                    <TelerikCard Class="mt-4" Width="100%">
+                        <CardBody>
+                            <h1 class="bh-h1">Có thể bạn quan tâm</h1>
+                            <div class="col-sm-12 mt-1">
+                                <i class="fa-solid fa-chevron-right" style="font-size: 9px; margin-right: 5px;"></i>
+                                <span class="bh-link-hover bh-font-size">Mẫu hợp đồng cho thuê phòng trọ</span>
+                                <CardSeparator></CardSeparator>
+                            </div>
+                            <div class="col-sm-12 mt-2">
+                                <i class="fa-solid fa-chevron-right" style="font-size: 9px; margin-right: 5px;"></i>
+                                <span class="bh-link-hover bh-font-size">Kinh nghiệm thuê phòng trọ sinh viên</span>
+                                <CardSeparator></CardSeparator>
+                            </div>
+                            <div class="col-sm-12 mt-2">
+                                <i class="fa-solid fa-chevron-right" style="font-size: 9px; margin-right: 5px;"></i>
+                                <span class="bh-link-hover bh-font-size">Kinh nghiệm thuê phòng trọ sinh viên</span>
+                                <CardSeparator></CardSeparator>
+                            </div>
+                            <div class="col-sm-12 mt-2">
+                                <i class="fa-solid fa-chevron-right" style="font-size: 9px; margin-right: 5px;"></i>
+                                <span class="bh-link-hover bh-font-size">Kinh nghiệm thuê phòng trọ sinh viên</span>
+                                <CardSeparator></CardSeparator>
+                            </div>
+                        </CardBody>
+                    </TelerikCard>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

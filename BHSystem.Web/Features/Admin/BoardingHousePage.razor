@@ -1,0 +1,113 @@
+﻿@page "/admin/boardinghouse"
+
+<TelerikToolBar Class="border-bottom-0">
+    <ToolBarButton IconClass="fa-solid fa-repeat bh-color-green" OnClick="@(()=> ReLoadDataHandler())">Làm mới</ToolBarButton>
+    <ToolBarButton IconClass="fa-solid fa-plus bh-color-green" OnClick="@(()=> OnOpenDialogHandler())">Thêm mới</ToolBarButton>
+    <ToolBarButton IconClass="fa-solid fa-xmark bh-color-red" OnClick="@(()=> ConfirmDeleteHandler())">Xóa dòng</ToolBarButton>
+</TelerikToolBar>
+<div class="bh-table-content" style=" height: calc(100vh - 250px);">
+    <TelerikGrid Data="@ListBoardingHouse"
+                 Height="100%"
+                 Width="100%"
+                 RowHeight="25"
+                 Pageable="true"
+                 PageSize="50"
+                 Sortable="true"
+                 Resizable="true"
+                 FilterMode="@GridFilterMode.FilterMenu"
+                 SelectionMode="@GridSelectionMode.Multiple"
+                 ScrollMode="@GridScrollMode.Scrollable"
+                 @bind-SelectedItems="@SelectedBoardingHouse"
+                  OnRowDoubleClick="@OnRowDoubleClickHandler"
+                 >
+        <GridSettings>
+            <GridPagerSettings InputType="PagerInputType.Input" />
+        </GridSettings>
+        <GridAggregates>
+            <GridAggregate Field=@nameof(BoardingHouseModel.Id) Aggregate="@GridAggregateType.Count" />
+        </GridAggregates>
+        <GridColumns>
+            <GridCheckboxColumn Width="30px" SelectAll="@true"></GridCheckboxColumn>
+            <GridColumn Field=@nameof(BoardingHouseModel.Id) Width="130px" MaxResizableWidth="150" Title="Mã trọ">
+                <Template>
+                    @{
+                        var model = (context as BoardingHouseModel);
+                            <span class="h-link">@model!.Id</span>
+                    }
+                </Template>
+                <FooterTemplate>
+                    Số dòng: @context.Count
+                </FooterTemplate>
+            </GridColumn>
+            <GridColumn Field=@nameof(BoardingHouseModel.Name) Width="140px" Title="Tên trọ"></GridColumn>
+            <GridColumn Field=@nameof(BoardingHouseModel.Adddress) Width="140px" Title="Địa chỉ"></GridColumn>
+            <GridColumn Field=@nameof(BoardingHouseModel.Qty) Width="140px" Title="Số lượng"></GridColumn>
+            <GridColumn Field=@nameof(BoardingHouseModel.Ward_Name) Width="140px" Title="Xã phường"></GridColumn>
+            <GridColumn Field=@nameof(BoardingHouseModel.Distinct_Name) Width="140px" Title="Huyện quận"></GridColumn>
+            <GridColumn Field=@nameof(BoardingHouseModel.City_Name) Width="140px" Title="Tỉnh thành"></GridColumn>
+            <GridColumn Field=@nameof(BoardingHouseModel.IsDeleted) Width="140px" Title="Đã xóa">
+                <Template>
+                    <BHUploadFileImage ImageUrl="@((context as BoardingHouseModel).File_Path)" Accept="image/*" 
+                            CssIcon="w1FileCss" ></BHUploadFileImage>
+                </Template>
+            </GridColumn>
+            BHUploadFileImage
+           @* <GridColumn Field=@nameof(BoardingHouseModel.IsDeleted) Width="140px" Title="Đã xóa">
+                <Template>
+                    @{
+                        var model = (context as BoardingHouseModel);
+                        <TelerikCheckBox @bind-Value="@model!.IsDeleted"Enabled="false" />
+                    }
+                </Template>
+            </GridColumn>*@
+@*            <GridColumn Field=@nameof(BoardingHouseModel.User_Create) Width="140px" Title="Người tạo"></GridColumn>
+            <GridColumn Field=@nameof(BoardingHouseModel.Date_Create) DisplayFormat="@DefaultConstants.FORMAT_GRID_DATE_TIME" Width="120px" Title="Ngày tạo"></GridColumn>
+            <GridColumn Field=@nameof(BoardingHouseModel.Date_Update) DisplayFormat="@DefaultConstants.FORMAT_GRID_DATE_TIME" Width="120px" Title="Ngày cập nhật"></GridColumn>*@
+        </GridColumns>
+    </TelerikGrid>
+</div>
+
+<BHDialog @bind-IsVisible="@IsShowDialog"
+    SaveAndClosed="@(()=> SaveDataHandler())"
+    Title="@(IsUpate ? "Cập nhật thông tin trọ" : "Thêm trọ mới")">
+    <EditForm EditContext="@_EditContext" >
+        <DataAnnotationsValidator />
+        <div>
+            <BHLabel Value="Tên trọ:" IsRequired="true" />
+            <TelerikTextBox @bind-Value="@BoardingHouseUpdate!.Name" Class="bh-link" Id="txtName" />
+            <BHValidationTooltip ValidationFor="@(()=> BoardingHouseUpdate.Name)" Id="txtName" />
+        </div>
+        <div>
+            <BHLabel Value="Số lượng phòng:" IsRequired="true" />
+            <TelerikNumericTextBox @bind-Value="@BoardingHouseUpdate!.Qty" Class="bh-link" Id="txtQty" />
+        </div>
+        <div>
+            <BHLabel Value="Thành phố:" IsRequired="true" />
+             <TelerikComboBox Data="@ListCity" TextField="Name" ValueField="Id" @bind-Value="@SelectCity"
+                 Placeholder="Chọn thành phố..." ClearButton="true" Filterable="true">
+            </TelerikComboBox>
+        </div>
+        <div>
+            <BHLabel Value="Huyện quận:" IsRequired="true" />
+            <TelerikComboBox Data="@ListDistinct" TextField="Name" ValueField="Id" @bind-Value="SelectDistinct"
+                 Placeholder="Chọn huyện quận..." ClearButton="true" Filterable="true"  >
+            </TelerikComboBox>
+        </div>
+        <div>
+            <BHLabel Value="Xã phường:" IsRequired="true" />
+            <TelerikComboBox Data="@ListWard" TextField="Name" ValueField="Id" @bind-Value="SelectWard"
+                 Placeholder="Chọn xã phường..." ClearButton="true" Filterable="true"  >
+            </TelerikComboBox>
+        </div>
+        <div>
+        <BHLabel Value="Địa chỉ cụ thể:" IsRequired="true" />
+        <TelerikTextArea @bind-Value="@BoardingHouseUpdate.Adddress"
+                 AutoSize="true"  />
+        </div>
+        <div>
+         <BHListImage @bind-ListSelectReturn="@ListImageDetail" IsUpdate="@IsUpate"SubFolder="BHouse"/>
+       </div>
+    </EditForm>
+    
+</BHDialog>
+<BHConfirm @ref="@_rDialogs" />
